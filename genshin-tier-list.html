@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genshin Impact 6.4 — All 113 Characters Damage Comparison</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=Noto+Sans+Thai:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#090b12;--bg2:#0e1120;--bg3:#141725;--gold:#c8a96e;--gold2:#f0d090;--blue2:#6ab4f5;--red:#e05050;--green:#4ecb71;--border:rgba(200,169,110,0.18);--text:#d0d3e5;--text2:#7a7f9a;--pyro:#ef7a35;--hydro:#4fc3f7;--electro:#b39ddb;--cryo:#80deea;--anemo:#80cbc4;--geo:#ffcc02;--dendro:#aed581}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'Noto Sans Thai',sans-serif;min-height:100vh;overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(1px 1px at 15% 25%,rgba(255,255,255,.5) 0%,transparent 100%),radial-gradient(1px 1px at 75% 8%,rgba(255,255,255,.4) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 55% 65%,rgba(255,255,255,.35) 0%,transparent 100%),radial-gradient(1px 1px at 8% 75%,rgba(255,255,255,.45) 0%,transparent 100%),radial-gradient(1px 1px at 88% 55%,rgba(255,255,255,.3) 0%,transparent 100%),radial-gradient(1px 1px at 35% 18%,rgba(255,255,255,.4) 0%,transparent 100%),radial-gradient(1px 1px at 65% 38%,rgba(255,255,255,.45) 0%,transparent 100%),radial-gradient(1px 1px at 48% 48%,rgba(255,255,255,.3) 0%,transparent 100%);pointer-events:none;z-index:0}
+  header{position:relative;z-index:1;text-align:center;padding:36px 20px 18px;background:linear-gradient(180deg,rgba(9,11,18,0) 0%,rgba(9,11,18,.95) 100%)}
+  header::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),var(--gold2),var(--gold),transparent)}
+  .logo{font-family:'Cinzel Decorative',cursive;font-size:clamp(16px,4vw,34px);color:var(--gold2);text-shadow:0 0 30px rgba(200,169,110,.5),0 2px 4px #000;letter-spacing:2px}
+  .sub{font-family:'Cinzel',serif;font-size:12px;color:var(--gold);letter-spacing:4px;margin-top:5px;opacity:.7}
+  .badge{display:inline-block;background:linear-gradient(135deg,#1a1f35,#252a45);border:1px solid var(--gold);border-radius:20px;padding:3px 16px;font-family:'Cinzel',serif;font-size:11px;color:var(--gold);margin-top:10px;letter-spacing:2px}
+  .ctrl{position:sticky;top:0;z-index:100;background:rgba(9,11,18,.97);border-bottom:1px solid var(--border);padding:12px 16px;backdrop-filter:blur(20px)}
+  .ctrl-inner{max-width:1500px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .sw{position:relative;flex:1;min-width:180px}
+  .sw::before{content:'⚔';position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--gold);font-size:13px}
+  input[type=search]{width:100%;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:7px;color:var(--text);padding:8px 10px 8px 32px;font-family:'Noto Sans Thai',sans-serif;font-size:13px;outline:none;transition:border-color .2s}
+  input[type=search]:focus{border-color:var(--gold)}
+  input[type=search]::placeholder{color:var(--text2)}
+  .fg{display:flex;flex-wrap:wrap;gap:5px}
+  .fb{padding:5px 12px;border:1px solid rgba(255,255,255,.09);border-radius:18px;background:rgba(255,255,255,.04);color:var(--text2);font-family:'Noto Sans Thai',sans-serif;font-size:11px;cursor:pointer;transition:all .2s;white-space:nowrap}
+  .fb:hover{border-color:var(--gold);color:var(--gold)}
+  .fb.active{background:rgba(200,169,110,.14);border-color:var(--gold);color:var(--gold2)}
+  .fb.ep.active{background:rgba(239,122,53,.14);border-color:var(--pyro);color:var(--pyro)}
+  .fb.eh.active{background:rgba(79,195,247,.14);border-color:var(--hydro);color:var(--hydro)}
+  .fb.ee.active{background:rgba(179,157,219,.14);border-color:var(--electro);color:var(--electro)}
+  .fb.ec.active{background:rgba(128,222,234,.14);border-color:var(--cryo);color:var(--cryo)}
+  .fb.ea.active{background:rgba(128,203,196,.14);border-color:var(--anemo);color:var(--anemo)}
+  .fb.eg.active{background:rgba(255,204,2,.14);border-color:var(--geo);color:var(--geo)}
+  .fb.ed.active{background:rgba(174,213,129,.14);border-color:var(--dendro);color:var(--dendro)}
+  select.ss{background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:7px;color:var(--text);padding:6px 10px;font-family:'Noto Sans Thai',sans-serif;font-size:12px;cursor:pointer;outline:none}
+  select.ss option{background:#1a1f30}
+  .sbar{max-width:1500px;margin:0 auto;padding:6px 16px;display:flex;gap:16px;font-size:11px;color:var(--text2);font-family:'Cinzel',serif}
+  .sbar span{color:var(--gold);font-weight:700}
+  .grid{max-width:1500px;margin:0 auto;padding:12px 12px 110px;display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:10px;position:relative;z-index:1}
+  .card{background:linear-gradient(145deg,var(--bg2),var(--bg3));border:1px solid var(--border);border-radius:11px;overflow:hidden;cursor:pointer;transition:all .22s;position:relative;animation:fi .35s ease both}
+  @keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  .card:hover{border-color:rgba(200,169,110,.45);transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.5),0 0 16px rgba(200,169,110,.08)}
+  .card.sel{border-color:var(--gold);box-shadow:0 0 14px rgba(200,169,110,.28)}
+  .card.sel::after{content:'✓';position:absolute;top:7px;right:7px;background:var(--gold);color:#090b12;font-size:10px;font-family:'Cinzel',serif;font-weight:700;padding:2px 7px;border-radius:18px}
+  .ctop{padding:13px 13px 8px;display:flex;align-items:center;gap:10px}
+  .cico{width:48px;height:48px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+  .cname{font-family:'Cinzel',serif;font-size:12px;font-weight:600;color:var(--text);line-height:1.3}
+  .cmeta{display:flex;align-items:center;gap:5px;margin-top:2px}
+  .rar{font-size:9px;font-family:'Cinzel',serif;letter-spacing:.5px}
+  .rar.r5{color:var(--gold2)}.rar.r4{color:#b39ddb}
+  .etag{font-size:9px;padding:1px 6px;border-radius:9px;font-family:'Cinzel',serif;font-weight:600}
+  .tp{background:rgba(239,122,53,.18);color:var(--pyro)}.th{background:rgba(79,195,247,.18);color:var(--hydro)}.te{background:rgba(179,157,219,.18);color:var(--electro)}.tc{background:rgba(128,222,234,.18);color:var(--cryo)}.ta{background:rgba(128,203,196,.18);color:var(--anemo)}.tg{background:rgba(255,204,2,.18);color:var(--geo)}.td{background:rgba(174,213,129,.18);color:var(--dendro)}
+  .cbody{padding:0 13px 12px}
+  .tbadge{display:inline-flex;align-items:center;font-size:10px;font-family:'Cinzel',serif;font-weight:700;padding:2px 9px;border-radius:5px;letter-spacing:.5px;margin-bottom:8px}
+  .tss{background:rgba(255,165,0,.14);color:#ffa500;border:1px solid rgba(255,165,0,.28)}.ts{background:rgba(200,169,110,.13);color:var(--gold2);border:1px solid var(--border)}.ta2{background:rgba(74,143,203,.13);color:var(--blue2);border:1px solid rgba(74,143,203,.28)}.tb2{background:rgba(78,203,113,.1);color:var(--green);border:1px solid rgba(78,203,113,.2)}.tc2{background:rgba(136,141,168,.09);color:var(--text2);border:1px solid rgba(136,141,168,.18)}
+  .roles{display:flex;gap:3px;flex-wrap:wrap;margin-bottom:8px}
+  .rt{font-size:9px;padding:2px 6px;border-radius:3px}
+  .rd{background:rgba(224,80,80,.14);color:#f07070}.rs{background:rgba(74,143,203,.14);color:var(--blue2)}.rsu{background:rgba(78,203,113,.1);color:var(--green)}
+  .dlabel{display:flex;justify-content:space-between;font-size:10px;margin-bottom:3px;color:var(--text2);font-family:'Cinzel',serif}
+  .dval{color:var(--gold2);font-weight:700;font-size:11px}
+  .btrack{height:4px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden}
+  .bfill{height:100%;border-radius:3px;transition:width .8s cubic-bezier(.4,0,.2,1)}
+  .cbar{position:fixed;bottom:0;left:0;right:0;background:rgba(8,10,18,.97);border-top:2px solid var(--gold);padding:10px 16px;z-index:200;display:none;backdrop-filter:blur(20px);animation:slu .3s ease}
+  .cbar.active{display:block}
+  @keyframes slu{from{transform:translateY(100%)}to{transform:translateY(0)}}
+  .cbar-in{max-width:1500px;margin:0 auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .clabel{font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:2px}
+  .cslots{display:flex;gap:6px;flex:1;flex-wrap:wrap}
+  .cslot{background:rgba(200,169,110,.09);border:1px solid var(--gold);border-radius:7px;padding:5px 10px;font-size:12px;display:flex;align-items:center;gap:7px}
+  .dot{width:7px;height:7px;border-radius:50%}
+  .rm{cursor:pointer;color:var(--text2);font-size:15px;line-height:1}
+  .rm:hover{color:var(--red)}
+  .bcmp{background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:7px;color:#090b12;padding:7px 18px;font-family:'Cinzel',serif;font-size:12px;font-weight:700;cursor:pointer;letter-spacing:1px;transition:opacity .2s}
+  .bcmp:hover{opacity:.85}
+  .bclr{background:transparent;border:1px solid var(--border);border-radius:7px;color:var(--text2);padding:6px 12px;font-family:'Noto Sans Thai',sans-serif;font-size:11px;cursor:pointer;transition:all .2s}
+  .bclr:hover{border-color:var(--red);color:var(--red)}
+  .moverlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:500;backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:16px}
+  .moverlay.active{display:flex}
+  .modal{background:var(--bg2);border:1px solid var(--gold);border-radius:14px;max-width:1000px;width:100%;max-height:90vh;overflow-y:auto;animation:sci .25s ease}
+  @keyframes sci{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+  .mhd{position:sticky;top:0;background:var(--bg2);border-bottom:1px solid var(--border);padding:18px 22px;display:flex;align-items:center;justify-content:space-between;z-index:1}
+  .mtitle{font-family:'Cinzel Decorative',cursive;font-size:15px;color:var(--gold2)}
+  .mclose{background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:7px;color:var(--text2);width:30px;height:30px;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;transition:all .2s}
+  .mclose:hover{border-color:var(--red);color:var(--red)}
+  .mbody{padding:20px}
+  .cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:20px}
+  .ccard{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center}
+  .cico2{font-size:36px;margin-bottom:6px}
+  .cname2{font-family:'Cinzel',serif;font-size:13px;color:var(--gold2);margin-bottom:3px}
+  .ctier{font-family:'Cinzel',serif;font-size:11px;color:var(--text2);margin-bottom:10px}
+  .crow{display:flex;justify-content:space-between;font-size:11px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+  .crow:last-child{border-bottom:none}
+  .crow .l{color:var(--text2);font-family:'Noto Sans Thai',sans-serif}
+  .crow .v{color:var(--gold);font-family:'Cinzel',serif;font-weight:600}
+  .cchart{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:18px}
+  .chtitle{font-family:'Cinzel',serif;font-size:12px;color:var(--gold);letter-spacing:2px;margin-bottom:14px}
+  .chbars{display:flex;flex-direction:column;gap:9px}
+  .chrow{display:flex;align-items:center;gap:9px}
+  .chname{width:100px;font-family:'Cinzel',serif;font-size:10px;color:var(--text);text-align:right;flex-shrink:0}
+  .chwrap{flex:1;height:22px;background:rgba(255,255,255,.04);border-radius:4px;overflow:hidden}
+  .chbar{height:100%;border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding-right:7px;font-family:'Cinzel',serif;font-size:10px;color:#090b12;font-weight:700;transition:width 1s cubic-bezier(.4,0,.2,1)}
+  .nores{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text2);font-family:'Cinzel',serif;font-size:13px;letter-spacing:2px}
+  .nores .icon{font-size:38px;display:block;margin-bottom:10px;opacity:.3}
+  ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}::-webkit-scrollbar-thumb:hover{background:var(--gold)}
+  @media(max-width:600px){.grid{grid-template-columns:repeat(auto-fill,minmax(148px,1fr))}.cname{font-size:11px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Genshin Impact</div>
+  <div class="sub">Character Damage Comparison · All 113 Characters</div>
+  <div class="badge">Version 6.4 · Luna V · February 2026</div>
+</header>
+<div class="ctrl">
+  <div class="ctrl-inner">
+    <div class="sw"><input type="search" id="si" placeholder="ค้นหาตัวละคร..."></div>
+    <div class="fg" id="ef">
+      <button class="fb active" data-el="all">ทั้งหมด</button>
+      <button class="fb ep" data-el="Pyro">🔥 Pyro</button>
+      <button class="fb eh" data-el="Hydro">💧 Hydro</button>
+      <button class="fb ee" data-el="Electro">⚡ Electro</button>
+      <button class="fb ec" data-el="Cryo">❄️ Cryo</button>
+      <button class="fb ea" data-el="Anemo">🌀 Anemo</button>
+      <button class="fb eg" data-el="Geo">🪨 Geo</button>
+      <button class="fb ed" data-el="Dendro">🌿 Dendro</button>
+    </div>
+    <div class="fg" id="rf">
+      <button class="fb active" data-role="all">ทุก Role</button>
+      <button class="fb" data-role="DPS">Main DPS</button>
+      <button class="fb" data-role="SubDPS">Sub-DPS</button>
+      <button class="fb" data-role="Support">Support</button>
+    </div>
+    <div class="fg" id="raf">
+      <button class="fb active" data-rar="all">ทุก Rarity</button>
+      <button class="fb" data-rar="5">⭐ 5★</button>
+      <button class="fb" data-rar="4">💜 4★</button>
+    </div>
+    <select class="ss" id="srt">
+      <option value="tier">เรียงตาม Tier</option>
+      <option value="dd">Damage สูงสุด</option>
+      <option value="da">Damage ต่ำสุด</option>
+      <option value="nm">ชื่อ A-Z</option>
+    </select>
+  </div>
+</div>
+<div class="sbar">
+  <div>แสดง <span id="cnt">0</span> ตัวละคร</div>
+  <div>เลือกเปรียบเทียบ <span id="cmpCnt">0</span>/4</div>
+</div>
+<div class="grid" id="grid"></div>
+<div class="cbar" id="cbar">
+  <div class="cbar-in">
+    <span class="clabel">⚔ เปรียบเทียบ</span>
+    <div class="cslots" id="cslots"></div>
+    <button class="bcmp" id="btnCmp">เปรียบเทียบ!</button>
+    <button class="bclr" id="btnClr">ล้าง</button>
+  </div>
+</div>
+<div class="moverlay" id="mo">
+  <div class="modal">
+    <div class="mhd">
+      <div class="mtitle">⚔ Damage Comparison</div>
+      <button class="mclose" id="mclose">✕</button>
+    </div>
+    <div class="mbody" id="mbody"></div>
+  </div>
+</div>
+<script>
+const EC={Pyro:'#ef7a35',Hydro:'#4fc3f7',Electro:'#b39ddb',Cryo:'#80deea',Anemo:'#80cbc4',Geo:'#ffcc02',Dendro:'#aed581'};
+const TO={SS:0,S:1,A:2,B:3,C:4};
+const CHARACTERS=[
+  // Outlanders
+  {n:'Traveler (Aether)',el:'Anemo',r:5,roles:['DPS','Support'],t:'B',d:38,w:'Sword',nat:'Outlander',e:'🌟'},
+  {n:'Traveler (Lumine)',el:'Anemo',r:5,roles:['DPS','Support'],t:'B',d:38,w:'Sword',nat:'Outlander',e:'✨'},
+  {n:'Aloy',el:'Cryo',r:5,roles:['DPS'],t:'C',d:22,w:'Bow',nat:'Special',e:'🏹'},
+  {n:'Skirk',el:'Cryo',r:5,roles:['DPS'],t:'SS',d:93,w:'Sword',nat:'Unknown',e:'🗡️'},
+  // Mondstadt
+  {n:'Amber',el:'Pyro',r:4,roles:['SubDPS'],t:'C',d:20,w:'Bow',nat:'Mondstadt',e:'🏹'},
+  {n:'Kaeya',el:'Cryo',r:4,roles:['DPS'],t:'C',d:28,w:'Sword',nat:'Mondstadt',e:'❄️'},
+  {n:'Lisa',el:'Electro',r:4,roles:['SubDPS'],t:'C',d:24,w:'Catalyst',nat:'Mondstadt',e:'⚡'},
+  {n:'Barbara',el:'Hydro',r:4,roles:['Support'],t:'C',d:18,w:'Catalyst',nat:'Mondstadt',e:'💧'},
+  {n:'Razor',el:'Electro',r:4,roles:['DPS'],t:'C',d:32,w:'Claymore',nat:'Mondstadt',e:'🐺'},
+  {n:'Venti',el:'Anemo',r:5,roles:['Support'],t:'B',d:48,w:'Bow',nat:'Mondstadt',e:'🍃'},
+  {n:'Fischl',el:'Electro',r:4,roles:['SubDPS'],t:'SS',d:75,w:'Bow',nat:'Mondstadt',e:'⚡'},
+  {n:'Noelle',el:'Geo',r:4,roles:['DPS','Support'],t:'B',d:38,w:'Claymore',nat:'Mondstadt',e:'🛡️'},
+  {n:'Bennett',el:'Pyro',r:4,roles:['Support'],t:'SS',d:83,w:'Sword',nat:'Mondstadt',e:'🗡️'},
+  {n:'Diona',el:'Cryo',r:4,roles:['Support'],t:'B',d:35,w:'Bow',nat:'Mondstadt',e:'🍷'},
+  {n:'Albedo',el:'Geo',r:5,roles:['SubDPS'],t:'B',d:49,w:'Sword',nat:'Mondstadt',e:'🌱'},
+  {n:'Eula',el:'Cryo',r:5,roles:['DPS'],t:'A',d:57,w:'Claymore',nat:'Mondstadt',e:'❄️'},
+  {n:'Mona',el:'Hydro',r:5,roles:['SubDPS','Support'],t:'B',d:43,w:'Catalyst',nat:'Mondstadt',e:'🔮'},
+  {n:'Diluc',el:'Pyro',r:5,roles:['DPS'],t:'B',d:44,w:'Claymore',nat:'Mondstadt',e:'🔥'},
+  {n:'Klee',el:'Pyro',r:5,roles:['DPS'],t:'B',d:45,w:'Catalyst',nat:'Mondstadt',e:'💣'},
+  {n:'Jean',el:'Anemo',r:5,roles:['Support'],t:'B',d:40,w:'Sword',nat:'Mondstadt',e:'🌬️'},
+  {n:'Sucrose',el:'Anemo',r:4,roles:['Support'],t:'A',d:52,w:'Catalyst',nat:'Mondstadt',e:'🌀'},
+  {n:'Varka',el:'Anemo',r:5,roles:['DPS'],t:'S',d:80,w:'Claymore',nat:'Mondstadt',e:'⚔️'},
+  {n:'Sayu',el:'Anemo',r:4,roles:['Support'],t:'C',d:28,w:'Claymore',nat:'Inazuma',e:'😴'},
+  {n:'Durin',el:'Pyro',r:5,roles:['SubDPS'],t:'SS',d:85,w:'Claymore',nat:'Mondstadt',e:'🐉'},
+  // Liyue
+  {n:'Xiangling',el:'Pyro',r:4,roles:['SubDPS'],t:'A',d:62,w:'Polearm',nat:'Liyue',e:'🍳'},
+  {n:'Beidou',el:'Electro',r:4,roles:['SubDPS'],t:'A',d:55,w:'Claymore',nat:'Liyue',e:'⛵'},
+  {n:'Xingqiu',el:'Hydro',r:4,roles:['SubDPS'],t:'A',d:60,w:'Sword',nat:'Liyue',e:'📖'},
+  {n:'Chongyun',el:'Cryo',r:4,roles:['SubDPS'],t:'C',d:30,w:'Claymore',nat:'Liyue',e:'❄️'},
+  {n:'Ningguang',el:'Geo',r:4,roles:['DPS'],t:'B',d:46,w:'Catalyst',nat:'Liyue',e:'💎'},
+  {n:'Xiao',el:'Anemo',r:5,roles:['DPS'],t:'A',d:58,w:'Polearm',nat:'Liyue',e:'🌀'},
+  {n:'Ganyu',el:'Cryo',r:5,roles:['DPS','SubDPS'],t:'A',d:61,w:'Bow',nat:'Liyue',e:'🌙'},
+  {n:'Zhongli',el:'Geo',r:5,roles:['Support'],t:'S',d:68,w:'Polearm',nat:'Liyue',e:'🏛️'},
+  {n:'Hu Tao',el:'Pyro',r:5,roles:['DPS'],t:'S',d:78,w:'Polearm',nat:'Liyue',e:'🌸'},
+  {n:'Yanfei',el:'Pyro',r:4,roles:['DPS'],t:'B',d:42,w:'Catalyst',nat:'Liyue',e:'⚖️'},
+  {n:'Yun Jin',el:'Geo',r:4,roles:['Support'],t:'B',d:36,w:'Polearm',nat:'Liyue',e:'🎭'},
+  {n:'Shenhe',el:'Cryo',r:5,roles:['Support'],t:'A',d:56,w:'Polearm',nat:'Liyue',e:'❄️'},
+  {n:'Yelan',el:'Hydro',r:5,roles:['SubDPS'],t:'A',d:63,w:'Bow',nat:'Liyue',e:'💧'},
+  {n:'Keqing',el:'Electro',r:5,roles:['DPS'],t:'B',d:46,w:'Sword',nat:'Liyue',e:'⚡'},
+  {n:'Baizhu',el:'Dendro',r:5,roles:['Support'],t:'B',d:40,w:'Catalyst',nat:'Liyue',e:'🐍'},
+  {n:'Qiqi',el:'Cryo',r:5,roles:['Support'],t:'C',d:22,w:'Sword',nat:'Liyue',e:'❄️'},
+  {n:'Yaoyao',el:'Dendro',r:4,roles:['Support'],t:'B',d:34,w:'Polearm',nat:'Liyue',e:'🐰'},
+  {n:'Xianyun',el:'Anemo',r:5,roles:['Support'],t:'A',d:58,w:'Catalyst',nat:'Liyue',e:'☁️'},
+  {n:'Gaming',el:'Pyro',r:4,roles:['DPS'],t:'B',d:46,w:'Claymore',nat:'Liyue',e:'🐉'},
+  {n:'Lan Yan',el:'Anemo',r:4,roles:['Support'],t:'B',d:36,w:'Catalyst',nat:'Liyue',e:'🎋'},
+  {n:'Zibai',el:'Hydro',r:5,roles:['DPS'],t:'SS',d:94,w:'Polearm',nat:'Liyue',e:'💎'},
+  // Inazuma
+  {n:'Kujou Sara',el:'Electro',r:4,roles:['Support'],t:'B',d:45,w:'Bow',nat:'Inazuma',e:'⚡'},
+  {n:'Raiden Shogun',el:'Electro',r:5,roles:['DPS','SubDPS','Support'],t:'S',d:77,w:'Polearm',nat:'Inazuma',e:'⚡'},
+  {n:'Kamisato Ayaka',el:'Cryo',r:5,roles:['DPS'],t:'A',d:62,w:'Sword',nat:'Inazuma',e:'❄️'},
+  {n:'Yoimiya',el:'Pyro',r:5,roles:['DPS'],t:'A',d:56,w:'Bow',nat:'Inazuma',e:'🎆'},
+  {n:'Gorou',el:'Geo',r:4,roles:['Support'],t:'B',d:37,w:'Bow',nat:'Inazuma',e:'🐕'},
+  {n:'Kokomi',el:'Hydro',r:5,roles:['Support'],t:'B',d:47,w:'Catalyst',nat:'Inazuma',e:'🪸'},
+  {n:'Thoma',el:'Pyro',r:4,roles:['Support'],t:'C',d:30,w:'Polearm',nat:'Inazuma',e:'🔥'},
+  {n:'Kuki Shinobu',el:'Electro',r:4,roles:['Support'],t:'B',d:40,w:'Sword',nat:'Inazuma',e:'⚡'},
+  {n:'Heizou',el:'Anemo',r:4,roles:['DPS'],t:'B',d:44,w:'Catalyst',nat:'Inazuma',e:'🌀'},
+  {n:'Kamisato Ayato',el:'Hydro',r:5,roles:['DPS'],t:'A',d:55,w:'Sword',nat:'Inazuma',e:'💧'},
+  {n:'Yae Miko',el:'Electro',r:5,roles:['SubDPS'],t:'B',d:50,w:'Catalyst',nat:'Inazuma',e:'🦊'},
+  {n:'Arataki Itto',el:'Geo',r:5,roles:['DPS'],t:'A',d:52,w:'Claymore',nat:'Inazuma',e:'💪'},
+  {n:'Chiori',el:'Geo',r:5,roles:['SubDPS'],t:'B',d:48,w:'Sword',nat:'Inazuma',e:'✂️'},
+  {n:'Rosaria',el:'Cryo',r:4,roles:['SubDPS'],t:'B',d:44,w:'Polearm',nat:'Mondstadt',e:'❄️'},
+  {n:'Kazuha',el:'Anemo',r:5,roles:['Support'],t:'S',d:67,w:'Sword',nat:'Inazuma',e:'🍁'},
+  {n:'Kirara',el:'Dendro',r:4,roles:['Support'],t:'B',d:33,w:'Sword',nat:'Inazuma',e:'🐱'},
+  {n:'Mika',el:'Cryo',r:4,roles:['Support'],t:'B',d:32,w:'Polearm',nat:'Mondstadt',e:'❄️'},
+  {n:'Mizuki',el:'Anemo',r:5,roles:['Support'],t:'A',d:56,w:'Catalyst',nat:'Inazuma',e:'🦋'},
+  // Sumeru
+  {n:'Tighnari',el:'Dendro',r:5,roles:['DPS'],t:'A',d:53,w:'Bow',nat:'Sumeru',e:'🌿'},
+  {n:'Collei',el:'Dendro',r:4,roles:['SubDPS'],t:'B',d:36,w:'Bow',nat:'Sumeru',e:'🌿'},
+  {n:'Dori',el:'Electro',r:4,roles:['Support'],t:'C',d:27,w:'Claymore',nat:'Sumeru',e:'💰'},
+  {n:'Cyno',el:'Electro',r:5,roles:['DPS'],t:'A',d:60,w:'Polearm',nat:'Sumeru',e:'⚡'},
+  {n:'Candace',el:'Hydro',r:4,roles:['Support'],t:'C',d:29,w:'Polearm',nat:'Sumeru',e:'💧'},
+  {n:'Nahida',el:'Dendro',r:5,roles:['SubDPS','Support'],t:'S',d:76,w:'Catalyst',nat:'Sumeru',e:'🌿'},
+  {n:'Layla',el:'Cryo',r:4,roles:['Support'],t:'B',d:36,w:'Sword',nat:'Sumeru',e:'⭐'},
+  {n:'Faruzan',el:'Anemo',r:4,roles:['Support'],t:'A',d:54,w:'Bow',nat:'Sumeru',e:'🌀'},
+  {n:'Nilou',el:'Hydro',r:5,roles:['DPS','Support'],t:'A',d:54,w:'Sword',nat:'Sumeru',e:'💃'},
+  {n:'Alhaitham',el:'Dendro',r:5,roles:['DPS'],t:'A',d:65,w:'Sword',nat:'Sumeru',e:'📚'},
+  {n:'Wanderer',el:'Anemo',r:5,roles:['DPS'],t:'A',d:64,w:'Catalyst',nat:'Sumeru',e:'🌀'},
+  {n:'Dehya',el:'Pyro',r:5,roles:['DPS','Support'],t:'B',d:42,w:'Claymore',nat:'Sumeru',e:'🔥'},
+  {n:'Kaveh',el:'Dendro',r:4,roles:['DPS'],t:'B',d:42,w:'Claymore',nat:'Sumeru',e:'🏛️'},
+  {n:'Sethos',el:'Electro',r:4,roles:['DPS'],t:'A',d:53,w:'Bow',nat:'Sumeru',e:'⚡'},
+  // Fontaine
+  {n:'Lyney',el:'Pyro',r:5,roles:['DPS'],t:'A',d:63,w:'Bow',nat:'Fontaine',e:'🎩'},
+  {n:'Lynette',el:'Anemo',r:4,roles:['Support'],t:'B',d:35,w:'Sword',nat:'Fontaine',e:'🎩'},
+  {n:'Freminet',el:'Cryo',r:4,roles:['DPS'],t:'B',d:40,w:'Claymore',nat:'Fontaine',e:'❄️'},
+  {n:'Neuvillette',el:'Hydro',r:5,roles:['DPS'],t:'S',d:82,w:'Catalyst',nat:'Fontaine',e:'⚖️'},
+  {n:'Wriothesley',el:'Cryo',r:5,roles:['DPS'],t:'S',d:75,w:'Catalyst',nat:'Fontaine',e:'❄️'},
+  {n:'Furina',el:'Hydro',r:5,roles:['SubDPS','Support'],t:'SS',d:87,w:'Sword',nat:'Fontaine',e:'👑'},
+  {n:'Charlotte',el:'Cryo',r:4,roles:['Support'],t:'B',d:38,w:'Catalyst',nat:'Fontaine',e:'📷'},
+  {n:'Navia',el:'Geo',r:5,roles:['DPS'],t:'S',d:74,w:'Claymore',nat:'Fontaine',e:'💠'},
+  {n:'Chevreuse',el:'Pyro',r:4,roles:['Support'],t:'A',d:54,w:'Polearm',nat:'Fontaine',e:'🔫'},
+  {n:'Clorinde',el:'Electro',r:5,roles:['DPS'],t:'S',d:73,w:'Sword',nat:'Fontaine',e:'⚡'},
+  {n:'Sigewinne',el:'Hydro',r:5,roles:['Support'],t:'B',d:41,w:'Bow',nat:'Fontaine',e:'💉'},
+  {n:'Emilie',el:'Dendro',r:5,roles:['SubDPS'],t:'B',d:51,w:'Polearm',nat:'Fontaine',e:'🌿'},
+  {n:'Escoffier',el:'Cryo',r:5,roles:['SubDPS'],t:'SS',d:86,w:'Sword',nat:'Fontaine',e:'❄️'},
+  // Natlan
+  {n:'Kinich',el:'Dendro',r:5,roles:['DPS'],t:'S',d:72,w:'Claymore',nat:'Natlan',e:'🌿'},
+  {n:'Mualani',el:'Hydro',r:5,roles:['DPS'],t:'S',d:71,w:'Catalyst',nat:'Natlan',e:'🌊'},
+  {n:'Kachina',el:'Geo',r:4,roles:['Support'],t:'B',d:35,w:'Polearm',nat:'Natlan',e:'🪆'},
+  {n:'Xilonen',el:'Geo',r:5,roles:['Support'],t:'S',d:70,w:'Sword',nat:'Natlan',e:'🎵'},
+  {n:'Chasca',el:'Anemo',r:5,roles:['DPS'],t:'A',d:57,w:'Bow',nat:'Natlan',e:'🌪️'},
+  {n:'Ororon',el:'Electro',r:4,roles:['SubDPS'],t:'A',d:53,w:'Bow',nat:'Natlan',e:'⚡'},
+  {n:'Citlali',el:'Cryo',r:5,roles:['Support'],t:'SS',d:84,w:'Catalyst',nat:'Natlan',e:'⭐'},
+  {n:'Mavuika',el:'Pyro',r:5,roles:['DPS','SubDPS'],t:'SS',d:98,w:'Claymore',nat:'Natlan',e:'🔥'},
+  {n:'Varesa',el:'Electro',r:5,roles:['DPS'],t:'SS',d:92,w:'Catalyst',nat:'Natlan',e:'⚡'},
+  {n:'Iansan',el:'Electro',r:5,roles:['Support'],t:'SS',d:81,w:'Polearm',nat:'Natlan',e:'⚡'},
+  {n:'Dahlia',el:'Hydro',r:4,roles:['Support'],t:'B',d:38,w:'Sword',nat:'Mondstadt',e:'🌺'},
+  {n:'Ifa',el:'Dendro',r:4,roles:['SubDPS'],t:'B',d:42,w:'Bow',nat:'Natlan',e:'🌿'},
+  // Snezhnaya / Fatui
+  {n:'Childe',el:'Hydro',r:5,roles:['DPS'],t:'A',d:58,w:'Bow',nat:'Snezhnaya',e:'💧'},
+  {n:'Arlecchino',el:'Pyro',r:5,roles:['DPS'],t:'S',d:79,w:'Polearm',nat:'Snezhnaya',e:'🃏'},
+  // Nod-Krai
+  {n:'Ineffa',el:'Electro',r:5,roles:['SubDPS'],t:'SS',d:90,w:'Bow',nat:'Nod-Krai',e:'🌙'},
+  {n:'Flins',el:'Electro',r:5,roles:['DPS'],t:'SS',d:95,w:'Sword',nat:'Nod-Krai',e:'⚡'},
+  {n:'Lauma',el:'Dendro',r:5,roles:['SubDPS','Support'],t:'SS',d:88,w:'Catalyst',nat:'Nod-Krai',e:'🌿'},
+  {n:'Columbina',el:'Hydro',r:5,roles:['SubDPS','Support'],t:'SS',d:91,w:'Catalyst',nat:'Nod-Krai',e:'💧'},
+  {n:'Nefer',el:'Pyro',r:5,roles:['DPS'],t:'SS',d:96,w:'Catalyst',nat:'Nod-Krai',e:'🌺'},
+  {n:'Aino',el:'Cryo',r:4,roles:['Support'],t:'B',d:37,w:'Sword',nat:'Nod-Krai',e:'❄️'},
+  {n:'Illuga',el:'Anemo',r:4,roles:['SubDPS'],t:'A',d:50,w:'Polearm',nat:'Nod-Krai',e:'🌀'},
+  {n:'Jahoda',el:'Hydro',r:5,roles:['Support'],t:'A',d:59,w:'Catalyst',nat:'Nod-Krai',e:'💧'},
+  // Extra 4-stars
+  {n:'Xinyan',el:'Pyro',r:4,roles:['DPS'],t:'C',d:28,w:'Claymore',nat:'Liyue',e:'🎸'},
+];
+
+const maxD=Math.max(...CHARACTERS.map(c=>c.d));
+let aEl='all',aRole='all',aRar='all',q='',srt='tier';
+let sel=[];
+
+function getF(){
+  let d=[...CHARACTERS];
+  if(aEl!=='all')d=d.filter(c=>c.el===aEl);
+  if(aRole!=='all')d=d.filter(c=>c.roles.includes(aRole));
+  if(aRar!=='all')d=d.filter(c=>c.r===parseInt(aRar));
+  if(q)d=d.filter(c=>c.n.toLowerCase().includes(q.toLowerCase()));
+  d.sort((a,b)=>srt==='tier'?TO[a.t]-TO[b.t]||b.d-a.d:srt==='dd'?b.d-a.d:srt==='da'?a.d-b.d:a.n.localeCompare(b.n));
+  return d;
+}
+function elC(e){return{Pyro:'tp',Hydro:'th',Electro:'te',Cryo:'tc',Anemo:'ta',Geo:'tg',Dendro:'td'}[e]||''}
+function tC(t){return{SS:'tss',S:'ts',A:'ta2',B:'tb2',C:'tc2'}[t]||'tc2'}
+function rC(r){return r==='DPS'?'rd':r==='SubDPS'?'rs':'rsu'}
+
+let _fd=[];
+function render(){
+  const data=getF();
+  _fd=data;
+  document.getElementById('cnt').textContent=data.length;
+  const g=document.getElementById('grid');
+  if(!data.length){g.innerHTML='<div class="nores"><span class="icon">🔍</span>ไม่พบตัวละคร</div>';return}
+  g.innerHTML=data.map((c,i)=>{
+    const pct=Math.round((c.d/maxD)*100);
+    const col=EC[c.el];
+    const isSel=sel.some(x=>x.n===c.n);
+    return `<div class="card${isSel?' sel':''}" data-idx="${i}" onclick="togIdx(this.dataset.idx)" style="animation-delay:${Math.min(i*.022,.5)}s">
+      <div class="ctop">
+        <div class="cico" style="background:${col}20;box-shadow:inset 0 0 0 1px ${col}30"><span style="filter:drop-shadow(0 0 3px ${col})">${c.e}</span></div>
+        <div><div class="cname">${c.n}</div><div class="cmeta"><span class="rar ${c.r===5?'r5':'r4'}">${'★'.repeat(c.r)}</span><span class="etag ${elC(c.el)}">${c.el}</span></div></div>
+      </div>
+      <div class="cbody">
+        <span class="tbadge ${tC(c.t)}">${c.t} Tier</span>
+        <div class="roles">${c.roles.map(r=>`<span class="rt ${rC(r)}">${r}</span>`).join('')}</div>
+        <div class="dlabel"><span>DMG Score</span><span class="dval">${c.d}</span></div>
+        <div class="btrack"><div class="bfill" style="width:${pct}%;background:linear-gradient(90deg,${col}88,${col})"></div></div>
+      </div></div>`;
+  }).join('');
+}
+
+function togIdx(idx){
+  const c=_fd[parseInt(idx)];
+  if(!c)return;
+  const i=sel.findIndex(x=>x.n===c.n);
+  if(i>-1)sel.splice(i,1);
+  else{if(sel.length>=4){alert('เลือกได้สูงสุด 4 ตัวละคร!');return}sel.push(c)}
+  updBar();render();
+}
+function updBar(){
+  document.getElementById('cmpCnt').textContent=sel.length;
+  const bar=document.getElementById('cbar');
+  if(!sel.length){bar.classList.remove('active');return}
+  bar.classList.add('active');
+  document.getElementById('cslots').innerHTML=sel.map((c,si)=>`<div class="cslot"><div class="dot" style="background:${EC[c.el]}"></div>${c.e} ${c.n}<span class="rm" onclick="rmIdx(${si});event.stopPropagation()">×</span></div>`).join('');
+}
+function rmIdx(i){sel.splice(i,1);updBar();render()}
+document.getElementById('btnClr').onclick=()=>{sel=[];updBar();render()};
+document.getElementById('btnCmp').onclick=openM;
+document.getElementById('mclose').onclick=()=>document.getElementById('mo').classList.remove('active');
+document.getElementById('mo').onclick=e=>{if(e.target===e.currentTarget)e.currentTarget.classList.remove('active')};
+
+function openM(){
+  if(sel.length<2){alert('กรุณาเลือกอย่างน้อย 2 ตัวละคร');return}
+  document.getElementById('mbody').innerHTML=`
+    <div class="cgrid">${sel.map(c=>`<div class="ccard"><div class="cico2">${c.e}</div><div class="cname2">${c.n}</div><div class="ctier" style="color:${EC[c.el]}">${c.el} · ${c.r}★</div><div class="crow"><span class="l">Tier</span><span class="v">${c.t}</span></div><div class="crow"><span class="l">DMG Score</span><span class="v">${c.d}</span></div><div class="crow"><span class="l">Role</span><span class="v">${c.roles.join(', ')}</span></div><div class="crow"><span class="l">Weapon</span><span class="v">${c.w}</span></div><div class="crow"><span class="l">Nation</span><span class="v">${c.nat}</span></div></div>`).join('')}</div>
+    <div class="cchart"><div class="chtitle">📊 Avg Damage Score</div><div class="chbars">${sel.map((c,i)=>`<div class="chrow"><div class="chname">${c.n.length>13?c.n.substring(0,12)+'…':c.n}</div><div class="chwrap"><div class="chbar" id="cb${i}" style="width:0%;background:linear-gradient(90deg,${EC[c.el]}99,${EC[c.el]})">${c.d}</div></div></div>`).join('')}</div><div style="margin-top:12px;font-size:10px;color:var(--text2);text-align:center;font-family:'Cinzel',serif;letter-spacing:1px">* DMG Score = ค่าประมาณการ Damage Contribution ใน v6.4 Meta</div></div>`;
+  document.getElementById('mo').classList.add('active');
+  setTimeout(()=>sel.forEach((c,i)=>{const e=document.getElementById('cb'+i);if(e)e.style.width=Math.round((c.d/maxD)*100)+'%'}),120);
+}
+document.getElementById('si').oninput=e=>{q=e.target.value;render()};
+document.getElementById('ef').onclick=e=>{const b=e.target.closest('.fb');if(!b)return;document.querySelectorAll('#ef .fb').forEach(x=>x.classList.remove('active'));b.classList.add('active');aEl=b.dataset.el;render()};
+document.getElementById('rf').onclick=e=>{const b=e.target.closest('.fb');if(!b)return;document.querySelectorAll('#rf .fb').forEach(x=>x.classList.remove('active'));b.classList.add('active');aRole=b.dataset.role;render()};
+document.getElementById('raf').onclick=e=>{const b=e.target.closest('.fb');if(!b)return;document.querySelectorAll('#raf .fb').forEach(x=>x.classList.remove('active'));b.classList.add('active');aRar=b.dataset.rar;render()};
+document.getElementById('srt').onchange=e=>{srt=e.target.value;render()};
+render();
+</script>
+</body>
+</html>
